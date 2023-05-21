@@ -8,7 +8,9 @@ import random
 import numpy as np
 import pandas as pd
 import pickle
-
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 #APP_DIR = Path(__file__).parent
 
 app = Flask(__name__)
@@ -62,7 +64,7 @@ def score(feature_stats_input):
 
 
 class Form(Form):
-        num_lab_procedures = SelectField('number of lab procedures',choices=[(str(x), str(x)) for x in range(1,133)], validators=[validators.DataRequired()])
+        num_lab_procedures = StringField('number of lab procedures', validators=[validators.DataRequired()])
         number_inpatient = SelectField('number of inpatient visits in the past year',choices=[(str(x), str(x)) for x in range(0,22)], validators=[validators.DataRequired()])
         num_medications = SelectField('number of medications',choices=[(str(x), str(x)) for x in range(1,133)], validators=[validators.DataRequired()])
         time_in_hospital = SelectField('time in hospital (days)',choices=[(str(x), str(x)) for x in range(1,15)], validators=[validators.DataRequired()])
