@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">Logo</a>
+  
+  <!-- Links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 2</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Link 3</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div class="container-fluid">
+
+    <h1>Hospital admission Predictor</h1>
+    <p>Input patient information and get a prediction for whether they will be admitted early.</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div uk-alert class="uk-animation-scale-down uk-animation-fade">
+                <a class="uk-alert-close" uk-close></a>
+                {% for message in messages %}
+                    <p>{{ message[1] }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <form action="" method="post" class="uk-form">
+        {{ form.csrf }}
+
+  <div class="card-columns">
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+      <div >{{ form.num_lab_procedures.label(class_="uk-form-label") }} <div>{{ form.num_lab_procedures(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+ <div>{{ form.number_inpatient.label(class_="uk-form-label") }} <div >{{ form.number_inpatient(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+      <div >{{ form.num_medications.label(class_="uk-form-label") }} <div >{{ form.num_medications(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+
+
+  <!-- Links ----------------------->
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+   <div >{{ form.time_in_hospital.label(class_="uk-form-label") }} <div >{{ form.time_in_hospital(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+ <div>{{ form.number_inpatient.label(class_="uk-form-label") }} <div >{{ form.number_inpatient(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+ <div >{{ form.number_diagnoses.label(class_="uk-form-label") }} <div >{{ form.number_diagnoses(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.num_procedures.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.num_procedures(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.number_emergency.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.number_emergency(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.number_outpatient.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.number_outpatient(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.Discharged_to_home.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.Discharged_to_home(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.Dicshared_to_rehab_fac.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.Dicshared_to_rehab_fac(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.gender_Male.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.gender_Male(class_="uk-select") }}</div></div>
+
+      </div>
+    </div>
+
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.payer_code_MC.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.payer_code_MC(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.diag_1_Circulatory_System.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.diag_1_Circulatory_System(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.diag_2_Circulatory_System.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.diag_2_Circulatory_System(class_="uk-select") }}</div></div>
+
+      </div>
+    </div>
+
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.diag_3_Circulatory_System.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.diag_3_Circulatory_System(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.age_70_80.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.age_70_80(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.age_60_70.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.age_60_70(class_="uk-select") }}</div></div>
+
+      </div>
+    </div>
+
+
+
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.race_Caucasian.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.race_Caucasian(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.change_med_no.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.change_med_no(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.age_80_90.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.age_80_90(class_="uk-select") }}</div></div>
+
+      </div>
+    </div>
+
+
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.medical_specialty_InternalMedicine.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.medical_specialty_InternalMedicine(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.admission_type_id_Emergency.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.admission_type_id_Emergency(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.diag_3_External_Causes.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.diag_3_External_Causes(class_="uk-select") }}</div></div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Links ----------------------->
+
+
+  <div class="row">
+ <div class="card bg-light">
+      <div class="card-body text-center">
+
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.insulin_no.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.insulin_no(class_="uk-select") }}</div></div>
+    </div>
+      </div>
+    </div>
+
+     <div class="card bg-light">
+      <div class="card-body text-center">
+<div class="uk-margin-top uk-width-1-4@l uk-width-1-3@m uk-width-1-2@s">{{ form.insulin_Steady.label(class_="uk-form-label") }} <div class="uk-form-controls">{{ form.insulin_Steady(class_="uk-select") }}</div></div>
+      </div>
+    </div>
+<button ype="submit" value="Submit"  id="SubmitBtn"  class="btn btn-primary btn-block">Submit</button>
+
+     
+
+  </div>
+
+
+
+
+
+  </div>
+
+
+
+
+</div>
+    
+</body>
+</html>
